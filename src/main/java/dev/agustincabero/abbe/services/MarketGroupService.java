@@ -36,6 +36,7 @@ public class MarketGroupService {
         return true;
     }
 
+    @Transactional(readOnly = true)
     public List<MarketGroupDto> findAllMarketGroupsByBrand(UUID brandPublicId) {
         // Validate that the brand exists
         brandRepository.findByPublicIdAndDeletedFalse(brandPublicId)
