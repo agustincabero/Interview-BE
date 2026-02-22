@@ -35,7 +35,7 @@ public class MarketService {
     }
 
     @Transactional
-    public void upsertMarkets(UUID marketGroupPublicId, List<UUID> inputCountries) {
+    public boolean upsertMarkets(UUID marketGroupPublicId, List<UUID> inputCountries) {
         Optional<MarketGroup> marketGroup = marketGroupRepository.findByPublicIdAndDeletedFalse(marketGroupPublicId);
         validateMarketGroup(marketGroup);
         List<Country> allCountries = countryRepository.findAllByDeletedFalse().toList();
@@ -53,6 +53,7 @@ public class MarketService {
         addNewMarkets(existingMarkets, inputCountries, brand.get(), marketGroupPublicId, allCountries);
 
         marketRepository.saveAll(existingMarkets);
+        return true;
     }
 
     private void addNewMarkets(List<Market> existingMarkets, List<UUID> inputCountries, Brand brand, UUID marketGroupPublicId, List<Country> countriesInDB) {

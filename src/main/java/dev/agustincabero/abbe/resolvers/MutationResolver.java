@@ -28,8 +28,6 @@ public class MutationResolver {
 
     @MutationMapping
     public boolean upsertMarkets(@Argument UUID marketGroupPublicId, @Argument List<UUID> countries) {
-        marketService.upsertMarkets(marketGroupPublicId, countries);
-
-        return true;
+        return marketService.upsertMarkets(marketGroupPublicId, countries);
     }
 }
