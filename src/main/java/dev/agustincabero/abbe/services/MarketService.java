@@ -63,13 +63,13 @@ public class MarketService {
                     .anyMatch(market -> market.getCountryPublicId().equals(countryPublicId) && !market.isDeleted());
 
             if (!exists) {
-                Market newMarket = new Market(brand.getPublicId(), generateNameForMarket(brand, countryPublicId, countriesInDB), marketGroupPublicId, countryPublicId);
+                Market newMarket = new Market(brand.getPublicId(), generateNameForMarket(brand.getName(), countryPublicId, countriesInDB), marketGroupPublicId, countryPublicId);
                 marketRepository.save(newMarket);
             }
         });
     }
 
-    private String generateNameForMarket(Brand brand, UUID countryPublicId, List<Country> countriesInDB) {
+    private String generateNameForMarket(String brandName, UUID countryPublicId, List<Country> countriesInDB) {
         Optional<Country> country = countriesInDB.stream()
                 .filter(c -> c.getPublicId().equals(countryPublicId))
                 .findFirst();
@@ -78,7 +78,7 @@ public class MarketService {
             throw new RuntimeException("Country not found");
         }
 
-        return brand.getName() + " - " + country.get().getName();
+        return brandName + " - " + country.get().getName();
     }
 
     private void softDeleteMarketsNotPresentInNewList(List<Market> existingMarkets, List<UUID> countries) {
