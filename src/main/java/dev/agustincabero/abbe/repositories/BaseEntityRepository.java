@@ -11,13 +11,13 @@ import java.util.stream.Stream;
 @NoRepositoryBean
 public interface BaseEntityRepository<T extends BaseEntity> extends JpaRepository<T, Long> {
 
-    Optional<T> findByPublicId(UUID publicId);
+    //Optional<T> findByPublicId(UUID publicId);
 
     Optional<T> findByPublicIdAndDeletedFalse(UUID publicId);
 
     Stream<T> findAllByDeletedFalse();
 
-    Stream<T> findByNameAndDeletedFalse(String name);
+    //Stream<T> findByNameAndDeletedFalse(String name);
 
-    Stream<T> findAllByNameContainingIgnoreCaseAndDeletedFalse(String name);
+    //Stream<T> findAllByNameContainingIgnoreCaseAndDeletedFalse(String name);
 }

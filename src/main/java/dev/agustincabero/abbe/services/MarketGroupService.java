@@ -43,7 +43,6 @@ public class MarketGroupService {
 
         // Fetch market groups for the brand
         return marketGroupRepository.findAllByBrandPublicIdAndDeletedFalse(brandPublicId)
-                .stream()
                 .map(MarketGroupDto::from)
                 .toList();
     }
