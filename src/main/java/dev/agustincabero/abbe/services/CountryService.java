@@ -16,7 +16,7 @@ public class CountryService {
     private final CountryRepository countryRepository;
 
     public List<CountryDto> findAllCountries() {
-        return countryRepository.findAllByDeletedFalse()
+        return countryRepository.findAllByDeletedFalseOrderByNameAsc()
                 .map(CountryDto::from)
                 .toList();
     }

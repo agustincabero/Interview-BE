@@ -38,7 +38,7 @@ public class MarketService {
     public boolean upsertMarkets(UUID marketGroupPublicId, List<UUID> inputCountries) {
         Optional<MarketGroup> marketGroup = marketGroupRepository.findByPublicIdAndDeletedFalse(marketGroupPublicId);
         validateMarketGroup(marketGroup);
-        List<Country> allCountries = countryRepository.findAllByDeletedFalse().toList();
+        List<Country> allCountries = countryRepository.findAllByDeletedFalseOrderByNameAsc().toList();
         validateCountries(allCountries, inputCountries);
         UUID brandPublicId = marketGroup.get().getBrandPublicId();
         Optional<Brand> brand = brandRepository.findByPublicIdAndDeletedFalse(brandPublicId);

@@ -15,7 +15,7 @@ public interface BaseEntityRepository<T extends BaseEntity> extends JpaRepositor
 
     Optional<T> findByPublicIdAndDeletedFalse(UUID publicId);
 
-    Stream<T> findAllByDeletedFalse();
+    Stream<T> findAllByDeletedFalseOrderByNameAsc();
 
     //Stream<T> findByNameAndDeletedFalse(String name);
 

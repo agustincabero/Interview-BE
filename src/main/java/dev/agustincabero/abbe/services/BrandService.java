@@ -16,7 +16,7 @@ public class BrandService {
     private final BrandRepository brandRepository;
 
     public List<BrandDto> findAllBrands() {
-        return brandRepository.findAllByDeletedFalse()
+        return brandRepository.findAllByDeletedFalseOrderByNameAsc()
                 .map(BrandDto::from)
                 .toList();
     }
