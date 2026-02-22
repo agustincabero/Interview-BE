@@ -1,0 +1,17 @@
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  datasource:
+    url: jdbc:postgresql://localhost:5433/bestseller_db
+    username: postgres
+    password: password
+  flyway:
+    enabled: true
+    outOfOrder: false
+server:
+    port: 8080

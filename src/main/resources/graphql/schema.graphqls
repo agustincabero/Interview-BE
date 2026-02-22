@@ -1,0 +1,35 @@
+type Brand {
+    publicId: ID!
+    name: String!
+}
+
+type Country {
+    publicId: ID!
+    name: String!
+}
+
+type MarketGroup {
+    publicId: ID!
+    name: String!
+}
+
+type Market {
+    publicId: ID!
+    name: String!
+    countryPublicId: ID!
+    marketGroupPublicId: ID!
+}
+
+type Query {
+    findAllBrands: [Brand!]!
+    findAllCountries: [Country!]!
+    findAllMarketGroups(brandPublicId: ID!): [MarketGroup!]!
+    findAllMarketsByMarketGroup(marketGroupPublicId: ID!): [Market!]!
+}
+
+type Mutation {
+    createMarketGroup(brandPublicId: ID!, name: String!): Boolean!
+    deleteMarketGroup(marketGroupPublicId: ID!): Boolean!
+    upsertMarkets(marketGroupPublicId: ID!, countries: [ID!]!): Boolean!
+}
+
