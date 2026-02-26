@@ -1,10 +1,10 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 INSERT INTO brand (public_id, name) VALUES
-(uuid_generate_v4(), 'Jack & Jones'),
+(uuid_generate_v4(), 'BALMOHK'),
 (uuid_generate_v4(), 'ONLY'),
-(uuid_generate_v4(), 'SELECTED'),
-(uuid_generate_v4(), 'Vero Moda');
+(uuid_generate_v4(), 'NAME IT'),
+(uuid_generate_v4(), 'EXIT');
 
 INSERT INTO country (public_id, name) VALUES
 (uuid_generate_v4(), 'Denmark'),
